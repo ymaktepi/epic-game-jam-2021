@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
-import {DEFAULT_ACTION, DialogOption, DIALOGS} from "../dialogs";
+import React, {useState, useEffect, useRef} from 'react';
+import {DEFAULT_ACTION, DIALOGS} from "../dialogs";
 import {DialogBox} from "./DialogBox";
 import {Options} from "./Options";
+import {DialogOption} from "../types";
+import {CURRENT_SENDER} from "../senders";
+import { Modal} from 'antd';
 
-const CURRENT_SENDER = {name: "You"};
 
 interface ConversationManagerProps {
     setNotifCount: (notifCount: number) => void;
@@ -12,7 +14,27 @@ interface ConversationManagerProps {
 export const ConversationManager = (props: ConversationManagerProps) => {
     const [index, setIndex] = useState(0);
     const [shownMessages, setShownMessages] = useState(DIALOGS[index].messages);
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        // @ts-ignore
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+    useEffect(() => {
+        scrollToBottom()
+    }, [shownMessages]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
     const moveToDialog = (newIndex: number, newTextFromUser: string) => {
         setIndex(newIndex)
         setShownMessages([...shownMessages, {
@@ -34,7 +56,7 @@ export const ConversationManager = (props: ConversationManagerProps) => {
             case "WON":
             case "LOST":
                 moveToDialog(DIALOGS.length - 1, text)
-                alert("YOU " + usedAction.type + "!");
+                showModal();
         }
     }
 
@@ -43,8 +65,12 @@ export const ConversationManager = (props: ConversationManagerProps) => {
 
     return (<div className={"ConversationManager"}>
         <div className="ConvoTopHalf">
-            {shownMessages.map(message => <DialogBox message={message} alignLeft={message.sender.name !== "You"}/>)}
+            {shownMessages.map(message => <DialogBox message={message} isSelf={message.sender === CURRENT_SENDER}/>)}
+            <div ref={messagesEndRef} />
         </div>
         <Options options={DIALOGS[index].options} performAction={performAction}/>
+        <Modal title="What a run!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            You got {nbNotifs} notifications, what a pro! GG 👔
+        </Modal>
     </div>);
 }

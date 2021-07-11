@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
-import {Message} from "../dialogs";
+import React from 'react';
+import {Message} from "../types";
 
 interface DialogBoxProps {
     message: Message;
-    alignLeft: boolean;
+    isSelf: boolean;
 }
 
 export const DialogBox = (props: DialogBoxProps) => {
-    const {message, alignLeft} = props;
-    const alignment = {alignSelf: alignLeft ? "flex-start" : "flex-end"};
-    return (<div className="Message" style={alignment}>
-        <div className={"MessageText"}>
+    const {message, isSelf} = props;
+    const alignSender = {alignSelf: isSelf ? "flex-end" : "flex-start"};
+    const styleText = { backgroundColor: isSelf ? "#097058" : "white", color: isSelf ? "white" : "black"};
+    return (<div className="Message" style={alignSender}>
+        {!isSelf &&
+        (<div className={"MessageSender"} style={{color: message.sender.color}}>
+            {message.sender.name}:
+        </div>)
+        }
+        <div className={"MessageText"} style={styleText}>
             {message.text}
         </div>
         {message.time &&

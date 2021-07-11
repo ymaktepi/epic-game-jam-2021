@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {DialogAction, DialogOption} from "../dialogs";
+import React from 'react';
+import {DialogOption} from "../types";
 
 interface OptionsProps {
     options: DialogOption[];
