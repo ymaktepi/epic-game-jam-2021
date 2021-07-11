@@ -18,7 +18,7 @@ export const HASHED: Sender = {
 }
 
 export const DOUBLE: Sender = {
-    name: "DoubleSentinels",
+    name: "DoubleSentinel",
     color: "#3595f0"
 }
 export const GARY: Sender = {
