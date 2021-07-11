@@ -25,11 +25,11 @@ const message2WeeksAgo = (messages: Message[]) => {
 }
 
 const message1DayBefore = (messages: Message[]) => {
-    return messageWithTime(messages, "1 jour avant l'EDJ2021");
+    return messageWithTime(messages, "1 jour avant l'EGJ2021");
 }
 
 const message1HBefore = (messages: Message[]) => {
-    return messageWithTime(messages, "1h avant l'EDJ2021");
+    return messageWithTime(messages, "1h avant l'EGJ2021");
 }
 
 const messageKickoff = (messages: Message[]) => {
