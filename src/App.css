@@ -1,38 +1,92 @@
+html , body{
+    width: 100%;
+    height: 100%;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
 .App {
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.MessageText {
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    flex-shrink: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MessageDate {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+.OptionSelector {
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ConversationHeader {
+    width: 600px;
+    height: 100px;
+    align-self: center;
+    padding: 1em;
+    margin-top: 5em;
+    background-color: #adf3ff;
+    display: flex;
+    align-items: center;
+}
+
+.ConversationManager {
+    width: 600px;
+    height: 80%;
+    background: #ece9e9;
+    margin: 0 auto auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    overflow: auto;
+}
+
+.ConvoTopHalf {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.NotifCount {
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin:auto;
+    text-align: center;
+    line-height: 1.55em;
+    font-size: 25px;
+}
+
+.ConvoBottomHalf {
+    width: 100%;
 }

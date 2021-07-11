@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {ConversationManager} from "./components/ConversationManager";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [notificationCount, setNotifCount] = useState(1);
+    return (
+        <div className="App">
+            <div className="ConversationHeader">
+                <img src={"./courgettes.png"} alt="Logo" height={"80%"}
+                     style={{marginLeft: "2em", borderColor: "white", borderWidth: "3px"}}/>
+                <span style={{marginLeft: "2em", fontSize: "30px"}}>The Courgettes Club</span>
+                <div className="NotifCount">{notificationCount}</div>
+            </div>
+            <ConversationManager setNotifCount={setNotifCount}/>
+        </div>
+    );
 }
 
 export default App;
