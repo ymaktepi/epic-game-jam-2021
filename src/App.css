@@ -53,6 +53,10 @@ html , body{
     align-items: center;
 }
 
+.OptionSelector:hover {
+    cursor: pointer;
+}
+
 .ConversationHeader {
     width: 600px;
     height: 100px;
