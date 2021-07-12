@@ -70,7 +70,7 @@ export const ConversationManager = (props: ConversationManagerProps) => {
         </div>
         <Options options={DIALOGS[index].options} performAction={performAction}/>
         <Modal title="Quel partie!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            Vous avez obtenus {nbNotifs} notifications, quel pro! Vous pouvez recommencer une partie en rafraîchissant la page. GG ! 👔
+            Vous avez obtenu {nbNotifs} notifications, quel pro! Vous pouvez recommencer une partie en rafraîchissant la page. GG ! 👔
         </Modal>
     </div>);
 }
