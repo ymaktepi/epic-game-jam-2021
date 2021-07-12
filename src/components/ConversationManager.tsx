@@ -69,8 +69,8 @@ export const ConversationManager = (props: ConversationManagerProps) => {
             <div ref={messagesEndRef} />
         </div>
         <Options options={DIALOGS[index].options} performAction={performAction}/>
-        <Modal title="What a run!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            You got {nbNotifs} notifications, what a pro! GG 👔
+        <Modal title="Quelle partie!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            Vous avez obtenu {nbNotifs} notifications, quel pro! Vous pouvez recommencer une partie en rafraîchissant la page. GG ! 👔
         </Modal>
     </div>);
 }
