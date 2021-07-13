@@ -5,6 +5,7 @@ import {Options} from "./Options";
 import {DialogOption} from "../types";
 import {CURRENT_SENDER} from "../senders";
 import { Modal} from 'antd';
+import { SoundManager, Sounds} from './SoundManager';
 
 
 interface ConversationManagerProps {
@@ -18,6 +19,9 @@ export const ConversationManager = (props: ConversationManagerProps) => {
     const scrollToBottom = () => {
         // @ts-ignore
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+
+        // message notification
+        SoundManager(Sounds.Notification);
     }
     useEffect(() => {
         scrollToBottom()
